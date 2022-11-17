@@ -335,7 +335,7 @@ if __name__ == "__main__":
         readline.set_completer(Completer(os.listdir()).complete)
 
         branch = f'[{subprocess.getoutput("git branch --show-current")}]' if subprocess.getoutput("git rev-parse --is-inside-work-tree 2>/dev/null") == "true" else ""
-        output = shell(input(f"{GREEN}◆ {RESET}{branch} {LIGHT_BLUE}{os.path.basename(PARENT_DIR)} {RED}❯{GREEN}❯{BLUE}❯{RESET} "))
+        output = shell(input(f"{GREEN}◆ {RESET}{branch} {LIGHT_BLUE}{os.path.basename(os.getcwd())} {RED}❯{GREEN}❯{BLUE}❯{RESET} "))
         Cmd(stdin=output)
         if output is None:
             continue
